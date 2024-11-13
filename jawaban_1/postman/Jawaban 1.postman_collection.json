@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "6cf47b0d-a640-44bf-b8b9-8f2302b5f141",
+		"name": "Jawaban 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14084062"
+	},
+	"item": [
+		{
+			"name": "convert-to-webp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "2d7da2e3589653e2e6e2b32ced1ed629c38cf56fe6e4ef6cb3846e2ef6bf3b182e4a58e984312841277fc5706606008baddd8012f0a3eb119b59f5b61f0d9feb",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url_gambar\": \"https://himsicengkareng.my.id/images/logo.png\",\n    \"persentase_kompresi\": 60\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/convert-to-webp.php",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"convert-to-webp.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

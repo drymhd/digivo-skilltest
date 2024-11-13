@@ -1,17 +1,20 @@
 <?php
 
-// hmac_hash = "20407de2595f288faf4d284200661e0a6818e4571ee76738231c41a1f4e51e770afb49e0794dd0208112bc82186c9f6119c37c83eb59db472870eca8b734c437"
+// HMAC hash yang diberikan sebagai contoh
+$hmac_hash = "2d7da2e3589653e2e6e2b32ced1ed629c38cf56fe6e4ef6cb3846e2ef6bf3b182e4a58e984312841277fc5706606008baddd8012f0a3eb119b59f5b61f0d9feb";
 
+// Fungsi untuk menghasilkan hash HMAC
 function generateHmacHash($data, $secretKey) {
     return hash_hmac('sha512', json_encode($data), $secretKey);
 }
 
+// Fungsi untuk memvalidasi hash HMAC
 function validateHmac($providedHash, $data, $secretKey) {
     $calculatedHash = generateHmacHash($data, $secretKey);
     return hash_equals($calculatedHash, $providedHash);
 }
 
-// Function to convert image to WEBP
+// Fungsi untuk konversi gambar menjadi WEBP
 function convertToWebp($url, $compressionPercentage) {
     if (empty($url)) {
         return [
@@ -68,23 +71,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputJSON = file_get_contents('php://input');
     $inputData = json_decode($inputJSON, true);
 
-    if (!$inputData || empty($inputData['url_gambar']) || empty($inputData['persentase_kompresi'])) {
+    if (!$inputData) {
         echo json_encode(['status' => 'error', 'message' => 'Invalid JSON input']);
         http_response_code(400);
         exit;
     }
 
     if (!validateHmac($hmacHash, $inputData, $secretKey)) {
-        
         echo json_encode(['status' => 'error', 'message' => 'Invalid HMAC']);
         http_response_code(403);
         exit;
     }
 
-    $urlGambar = $inputData['url_gambar'];
-    $persentaseKompresi = (int)$inputData['persentase_kompresi'];
-
-    $response = convertToWebp($urlGambar, $persentaseKompresi);
+    // Pemrosesan berdasarkan tipe request JSON yang berbeda
+    if (isset($inputData['url_gambar']) && isset($inputData['persentase_kompresi'])) {
+        // Proses konversi gambar jika parameter tersedia
+        $urlGambar = $inputData['url_gambar'];
+        $persentaseKompresi = (int)$inputData['persentase_kompresi'];
+        $response = convertToWebp($urlGambar, $persentaseKompresi);
+    } else {
+        // Jika tidak ada parameter yang sesuai, balas dengan data JSON mentah
+        $response = [
+            'status' => 'success',
+            'message' => 'Request processed successfully',
+            'data_received' => $inputData
+        ];
+    }
 
     echo json_encode($response);
     http_response_code($response['status'] === 'success' ? 200 : 500);
