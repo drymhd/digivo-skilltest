@@ -4,12 +4,12 @@ set FOREIGN_KEY_CHECKS=0;
 
 TRUNCATE TABLE users;
 
-INSERT INTO users (name, username, email, password_hash) VALUES
-('User One', 'user1', 'user1@example.com', 'hashedpassword1'),
-('User Two', 'user2', 'user2@example.com', 'hashedpassword2'),
-('User Three', 'user3', 'user3@example.com', 'hashedpassword3'),
-('User Four', 'user4', 'user4@example.com', 'hashedpassword4'),
-('User Five', 'user5', 'user5@example.com', 'hashedpassword5');
+INSERT INTO users (name, username, email, password) VALUES
+('User One', 'user1', 'user1@example.com', '$2b$12$exampleHashedPassword1'),
+('User Two', 'user2', 'user2@example.com', '$2b$12$exampleHashedPassword2'),
+('User Three', 'user3', 'user3@example.com', '$2b$12$exampleHashedPassword3'),
+('User Four', 'user4', 'user4@example.com', '$2b$12$exampleHashedPassword4'),
+('User Five', 'user5', 'user5@example.com', '$2b$12$exampleHashedPassword5');
 
 
 TRUNCATE TABLE posts;
