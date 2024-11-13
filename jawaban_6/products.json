@@ -1,0 +1,12 @@
+{
+    "_id": { "$oid": "6489b234a7d2f61234c1ac34" },
+    "name": "Product Name",
+    "description": "Detailed description of the product, including specifications.",
+    "price": 150000,
+    "currency": "IDR",
+    "stock": 100,
+    "total_sold": 25,
+    "category": "Electronics",
+    "created_at": { "$date": "2024-11-12T10:00:00.000Z" },
+    "updated_at": { "$date": "2024-11-12T10:00:00.000Z" }
+  }

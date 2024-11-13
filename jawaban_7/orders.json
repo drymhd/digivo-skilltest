@@ -1,0 +1,13 @@
+{
+  "_id": {
+    "$oid": "6733550043b561f312dbe6a6"
+  },
+  "product_id": {
+    "$oid": "64b6b0f4f4d26b7e9f5f4d23"
+  },
+  "quantity": 3,
+  "email": "dary@admin.com",
+  "order_date": {
+    "$date": "2024-11-12T10:00:00.000Z"
+  }
+}

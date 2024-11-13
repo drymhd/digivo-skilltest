@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "8d3e50a5-d1a4-4b68-9cd6-d804a5d30f71",
+		"name": "Jawaban 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14084062"
+	},
+	"item": [
+		{
+			"name": "register-webhook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhookUrl\": \"http://localhost:9000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/register-webhook",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"register-webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\": \"1\",\n    \"status\": \"cancelled\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/update-status",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"update-status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
